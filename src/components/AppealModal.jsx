@@ -56,7 +56,7 @@ export default function AppealModal({ isOpen, onClose }) {
         </div>
 
         {/* Form and list */}
-        <div className="p-6 overflow-y-auto space-y-5 text-xs text-slate-700">
+        <div className="p-6 overflow-y-auto custom-light-scroll space-y-5 text-xs text-slate-700">
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-3.5 bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide">

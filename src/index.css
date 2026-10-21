@@ -15,6 +15,96 @@
   }
 }
 
+/* ========================================================
+   CUSTOM SLEEK MODERN SCROLLBARS (SYNCHRONIZED THEME)
+   ======================================================== */
+
+/* Global WebKit scrollbar (Chrome, Edge, Brave, Opera, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e4b8a;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox Standard */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Dark Navy Scrollbar for Sidebar Drawer & Dark Menus */
+.custom-dark-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-dark-scroll::-webkit-scrollbar-track {
+  background: #12284c;
+}
+
+.custom-dark-scroll::-webkit-scrollbar-thumb {
+  background: #254b85;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.custom-dark-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+.custom-dark-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #254b85 transparent;
+}
+
+/* Custom Light Scrollbar for Table containers & Light Modals */
+.custom-light-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-light-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+
+.custom-light-scroll::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+}
+
+.custom-light-scroll::-webkit-scrollbar-thumb:hover {
+  background: #1b5fc1;
+}
+
+.custom-light-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #f1f5f9;
+}
+
+/* Keyframe animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -32,9 +122,9 @@
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-slideRight {
-  animation: slideRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

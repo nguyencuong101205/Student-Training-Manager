@@ -53,7 +53,7 @@ export default function TuitionView() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-2xl border border-slate-200">
+      <div className="overflow-x-auto custom-light-scroll rounded-2xl border border-slate-200">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
             <tr className="bg-slate-100 text-slate-700 uppercase tracking-wider font-extrabold border-b text-[11px]">

@@ -216,7 +216,7 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
         </div>
 
         {/* Menu Navigation Items with Tree Timeline Structure */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1 select-none">
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1 select-none custom-dark-scroll pr-2">
           {menuList.map((item) => {
             const Icon = item.icon;
             const isOpenSection = openSections[item.id];

@@ -22,7 +22,7 @@ export default function ArticleModal({ article, onClose }) {
           </button>
         </div>
 
-        <div className="p-6 overflow-y-auto space-y-4">
+        <div className="p-6 overflow-y-auto custom-light-scroll space-y-4">
           <h2 className="text-lg md:text-xl font-bold text-slate-900 leading-snug">
             {article.title}
           </h2>
