@@ -169,3 +169,16 @@ export const mockGrades = [
 export const mockAppeals = [
   { id: "PCK-001", subject: "Mạng máy tính (INT204)", examDate: "15/06/2026", currentGrade: "7.9", reason: "Đề nghị chấm lại phần bài tập cấu hình định tuyến OSPF", status: "Đang xử lý", date: "20/06/2026" }
 ];
+
+export const mockOneStopRequests = [
+  { id: "MC-2026-081", title: "Giấy xác nhận sinh viên vay vốn Ngân hàng CSXH", date: "18/10/2026", status: "Đã duyệt", readyToPick: true, location: "Bộ phận Một cửa - P.102 Nhà H1" },
+  { id: "MC-2026-074", title: "Cấp lại thẻ sinh viên (tích hợp thẻ ngân hàng)", date: "05/10/2026", status: "Đã hoàn thành", readyToPick: false, location: "Đã nhận thẻ" },
+  { id: "MC-2026-062", title: "Bảng điểm học tập song ngữ tiếng Anh", date: "22/09/2026", status: "Đã hoàn thành", readyToPick: false, location: "Đã gửi bản scan qua email" }
+];
+
+export const mockExamSchedule = [
+  { code: "INT301", name: "Lập trình Web nâng cao", examDate: "12/11/2026", time: "07:30 - 09:00", shift: "Ca 1", room: "PM-301", sbd: "CNTT-042", format: "Thực hành trên máy" },
+  { code: "INT302", name: "Cơ sở dữ liệu phân tán", examDate: "16/11/2026", time: "09:30 - 11:00", shift: "Ca 2", room: "H1-205", sbd: "CNTT-042", format: "Tự luận" },
+  { code: "INT303", name: "Trí tuệ nhân tạo & Học máy", examDate: "20/11/2026", time: "13:30 - 15:00", shift: "Ca 3", room: "H2-102", sbd: "CNTT-042", format: "Trắc nghiệm máy tính" },
+  { code: "INT304", name: "Kiến trúc hệ thống phần mềm", examDate: "25/11/2026", time: "07:30 - 09:00", shift: "Ca 1", room: "H1-301", sbd: "CNTT-042", format: "Báo cáo tiểu luận" }
+];

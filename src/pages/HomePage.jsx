@@ -9,19 +9,25 @@ import TuitionView from '../components/TuitionView';
 import CourseRegistrationView from '../components/CourseRegistrationView';
 import ProfileView from '../components/ProfileView';
 import GradeLookupView from '../components/GradeLookupView';
+import OneStopServiceView from '../components/OneStopServiceView';
+import ExamScheduleView from '../components/ExamScheduleView';
 import AppealModal from '../components/AppealModal';
 import ArticleModal from '../components/ArticleModal';
 import PortalFooter from '../components/PortalFooter';
 
 export default function HomePage({ user, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'schedule' | 'tuition' | 'registration' | 'profile' | 'grades'
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'schedule' | 'tuition' | 'registration' | 'profile' | 'grades' | 'one-stop' | 'exam-schedule'
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [isAppealOpen, setIsAppealOpen] = useState(false);
 
   const renderContent = () => {
     switch (currentView) {
+      case 'one-stop':
+        return <OneStopServiceView />;
+      case 'exam-schedule':
+        return <ExamScheduleView />;
       case 'grades':
         return <GradeLookupView />;
       case 'tuition':
@@ -82,6 +88,8 @@ export default function HomePage({ user, onLogout }) {
               </button>
               <span>/</span>
               <span className="text-[#1b5fc1] font-extrabold capitalize text-xs">
+                {currentView === 'one-stop' && 'Dịch vụ một cửa sinh viên điện tử'}
+                {currentView === 'exam-schedule' && 'Lịch thi kết thúc học phần'}
                 {currentView === 'grades' && 'Góc học tập / Tra cứu điểm & Bảng điểm'}
                 {currentView === 'schedule' && 'Thời khóa biểu tuần'}
                 {currentView === 'tuition' && 'Tra cứu công nợ & học phí'}

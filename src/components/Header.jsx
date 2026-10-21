@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, Search, ChevronDown, User, LogOut, Bell, Shield, Key, BookOpen, Calendar, HelpCircle, CheckCircle2 } from 'lucide-react';
+import { Menu, Search, ChevronDown, User, LogOut, Bell, Shield, Key, BookOpen, Calendar, HelpCircle, Sparkles, Award } from 'lucide-react';
+import { mockTrainingNews, mockSchoolNews } from '../data/mockData';
 
 export default function Header({ 
   user, 
@@ -12,6 +13,12 @@ export default function Header({
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  // Live quick search matching
+  const matchingNews = searchQuery.trim() 
+    ? [...mockTrainingNews, ...mockSchoolNews].filter(n => n.title.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 4)
+    : [];
 
   return (
     <header className="bg-[#12315a] text-white sticky top-0 z-40 shadow-sm border-b border-[#1a4277] select-none">
@@ -45,18 +52,49 @@ export default function Header({
           </div>
         </div>
 
-        {/* Center: Search Bar matching Image 2 */}
-        <div className="hidden md:flex items-center flex-1 max-w-md mx-6">
+        {/* Center: Search Bar with Live Instant Results */}
+        <div className="hidden md:flex items-center flex-1 max-w-md mx-6 relative">
           <div className="relative w-full">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm kiếm thông tin..."
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setTimeout(() => setSearchFocused(false), 250)}
+              placeholder="Tìm kiếm thông tin, biểu mẫu, lịch thi..."
               className="w-full bg-[#1c4377] hover:bg-[#214c85] focus:bg-[#214c85] text-xs text-white placeholder-blue-200/70 pl-4 pr-10 py-2.5 rounded-full border border-blue-400/20 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition shadow-inner"
             />
             <Search className="w-4 h-4 text-blue-200 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
+
+          {/* Instant Search Popup */}
+          {searchFocused && searchQuery.trim() && (
+            <div className="absolute top-12 left-0 right-0 bg-white rounded-2xl shadow-2xl py-3 text-slate-800 text-xs border border-slate-200 z-50 animate-fadeIn overflow-hidden">
+              <div className="px-4 pb-2 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                Kết quả tìm kiếm nhanh ({matchingNews.length} thông báo)
+              </div>
+              <div className="divide-y divide-slate-100 max-h-56 overflow-y-auto">
+                {matchingNews.map((news) => (
+                  <div
+                    key={news.id}
+                    onClick={() => {
+                      onNavigate('home');
+                      setSearchFocused(false);
+                    }}
+                    className="p-3 hover:bg-slate-50 cursor-pointer transition"
+                  >
+                    <p className="font-bold text-slate-900 text-xs line-clamp-1">{news.title}</p>
+                    <span className="text-[10px] text-blue-600 font-mono mt-0.5 block">{news.date} • {news.category}</span>
+                  </div>
+                ))}
+                {matchingNews.length === 0 && (
+                  <div className="p-4 text-center text-slate-400 text-xs">
+                    Không tìm thấy bài viết chứa "{searchQuery}"
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right: Notifications & User Profile */}
@@ -95,7 +133,7 @@ export default function Header({
             )}
           </div>
 
-          {/* User Profile dropdown matching Image 2 */}
+          {/* User Profile dropdown */}
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -132,6 +170,14 @@ export default function Header({
                 </button>
 
                 <button
+                  onClick={() => { onNavigate('grades'); setDropdownOpen(false); }}
+                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
+                >
+                  <Award className="w-4 h-4 text-purple-600" />
+                  <span>Tra cứu điểm học kỳ</span>
+                </button>
+
+                <button
                   onClick={() => { onNavigate('schedule'); setDropdownOpen(false); }}
                   className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
                 >
@@ -148,11 +194,11 @@ export default function Header({
                 </button>
 
                 <button
-                  onClick={() => { onNavigate('registration'); setDropdownOpen(false); }}
+                  onClick={() => { onNavigate('one-stop'); setDropdownOpen(false); }}
                   className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
                 >
-                  <BookOpen className="w-4 h-4 text-purple-600" />
-                  <span>Đăng ký môn học</span>
+                  <Sparkles className="w-4 h-4 text-blue-500" />
+                  <span>Dịch vụ Một cửa sinh viên</span>
                 </button>
 
                 <div className="border-t border-slate-100 mt-1 pt-1">

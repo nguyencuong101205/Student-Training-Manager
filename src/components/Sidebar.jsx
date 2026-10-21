@@ -74,7 +74,7 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
       id: 'one-stop',
       label: 'Hệ thống một cửa',
       icon: ChevronsRight,
-      action: () => alert("Chuyển tới Cổng dịch vụ Một cửa điện tử UTT")
+      view: 'one-stop'
     },
     {
       id: 'news',
@@ -132,7 +132,7 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
       hasSub: true,
       subItems: [
         { label: 'Thời khóa biểu tuần', view: 'schedule' },
-        { label: 'Lịch thi học kỳ', action: () => alert("Lịch thi sẽ mở trước 2 tuần") }
+        { label: 'Lịch thi học kỳ', view: 'exam-schedule' }
       ]
     },
     {
