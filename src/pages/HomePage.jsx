@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import StudentWelcomeBanner from '../components/StudentWelcomeBanner';
 import QuickCards from '../components/QuickCards';
 import NewsSection from '../components/NewsSection';
 import ScheduleView from '../components/ScheduleView';
@@ -8,6 +9,7 @@ import TuitionView from '../components/TuitionView';
 import CourseRegistrationView from '../components/CourseRegistrationView';
 import ProfileView from '../components/ProfileView';
 import ArticleModal from '../components/ArticleModal';
+import PortalFooter from '../components/PortalFooter';
 
 export default function HomePage({ user, onLogout }) {
   // Menu is closed by default. When opened, it blurs the whole screen and shows the rich icon menu
@@ -30,6 +32,7 @@ export default function HomePage({ user, onLogout }) {
       default:
         return (
           <>
+            <StudentWelcomeBanner onNavigate={setCurrentView} />
             <QuickCards onNavigate={setCurrentView} />
             <NewsSection 
               onSelectArticle={setSelectedArticle} 
@@ -41,8 +44,8 @@ export default function HomePage({ user, onLogout }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9] flex flex-col font-sans text-slate-800">
-      {/* Modern Top Header with menu button */}
+    <div className="min-h-screen bg-[#f3f6fa] flex flex-col font-sans text-slate-800">
+      {/* Modern Top Header with menu button (No Logo, clean typography) */}
       <Header
         user={user}
         onLogout={onLogout}
@@ -53,20 +56,20 @@ export default function HomePage({ user, onLogout }) {
         currentView={currentView}
       />
 
-      {/* Full-width Main Workspace (No fixed cramped sidebar) */}
+      {/* Full-width Main Workspace */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
         {/* Breadcrumb if not in home view */}
         {currentView !== 'home' && (
-          <div className="mb-5 flex items-center justify-between bg-white px-4 py-3 rounded-2xl border border-slate-200/80 shadow-xs">
+          <div className="mb-6 flex items-center justify-between bg-white px-5 py-3.5 rounded-2xl border border-slate-200/90 shadow-xs">
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <button 
                 onClick={() => setCurrentView('home')} 
-                className="hover:text-blue-600 font-semibold text-slate-600"
+                className="hover:text-blue-600 font-semibold text-slate-600 transition"
               >
                 Trang chủ
               </button>
               <span>/</span>
-              <span className="text-blue-700 font-bold capitalize">
+              <span className="text-blue-700 font-extrabold capitalize text-xs">
                 {currentView === 'schedule' && 'Thời khóa biểu tuần'}
                 {currentView === 'tuition' && 'Tra cứu công nợ & học phí'}
                 {currentView === 'registration' && 'Đăng ký học phần'}
@@ -76,7 +79,7 @@ export default function HomePage({ user, onLogout }) {
 
             <button
               onClick={() => setCurrentView('home')}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-800 px-3 py-1 rounded-lg hover:bg-blue-50 transition"
+              className="text-xs font-bold text-blue-600 hover:text-blue-800 px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 transition active:scale-95"
             >
               ← Quay lại trang chủ
             </button>
@@ -85,6 +88,9 @@ export default function HomePage({ user, onLogout }) {
 
         {renderContent()}
       </main>
+
+      {/* Comprehensive Portal Footer */}
+      <PortalFooter />
 
       {/* Blurred Overlay Full-Page Menu Drawer */}
       <Sidebar

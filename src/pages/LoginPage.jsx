@@ -15,15 +15,18 @@ import {
   HelpCircle,
   CheckCircle2,
   FileCheck2,
-  ExternalLink
+  ExternalLink,
+  BookOpen,
+  Briefcase
 } from 'lucide-react';
-import UttLogo from '../components/UttLogo';
 import StudentLookupModal from '../components/StudentLookupModal';
 import PaymentModal from '../components/PaymentModal';
 
 export default function LoginPage({ onLoginSuccess }) {
+  const [role, setRole] = useState('student'); // 'student' | 'teacher' | 'applicant'
   const [username, setUsername] = useState('74dcht21272');
   const [password, setPassword] = useState('123456');
+  const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -45,9 +48,9 @@ export default function LoginPage({ onLoginSuccess }) {
       setLoading(false);
       onLoginSuccess({
         id: username,
-        name: "Nguyễn Bá Trung Cường"
+        name: role === 'teacher' ? "TS. Trần Văn Nam" : "Nguyễn Bá Trung Cường"
       });
-    }, 400);
+    }, 350);
   };
 
   const handleSSO = () => {
@@ -58,15 +61,14 @@ export default function LoginPage({ onLoginSuccess }) {
         id: "74dcht21272",
         name: "Nguyễn Bá Trung Cường"
       });
-    }, 400);
+    }, 350);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#082a63] via-[#0d3f8f] to-[#061e47] text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
       {/* Background Architectural & Academic Watermarks */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.06] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05] flex items-center justify-center overflow-hidden">
         <svg className="w-[1200px] h-[1200px] text-white" viewBox="0 0 500 500" fill="currentColor">
-          {/* Classical university dome and columns silhouette */}
           <path d="M50 450 H450 V430 H50 Z M80 430 V220 H110 V430 Z M150 430 V220 H180 V430 Z M220 430 V220 H250 V430 Z M290 430 V220 H320 V430 Z M360 430 V220 H390 V430 Z M60 220 L250 120 L440 220 Z M200 120 A50 50 0 0 1 300 120 Z" />
         </svg>
       </div>
@@ -79,11 +81,16 @@ export default function LoginPage({ onLoginSuccess }) {
         <GraduationCap className="w-48 h-48 text-white rotate-[20deg]" />
       </div>
 
-      {/* Top Banner / Header */}
+      {/* Top Banner / Header (No Logo) */}
       <header className="relative z-10 pt-6 px-4 sm:px-8 max-w-7xl mx-auto w-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
-            <UttLogo light={true} className="h-10" />
+          <div className="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 flex items-center gap-2.5 shadow-sm">
+            <span className="text-base sm:text-lg font-black tracking-wider text-white uppercase">
+              CỔNG ĐÀO TẠO
+            </span>
+            <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500 text-slate-950 uppercase tracking-wide">
+              TRỰC TUYẾN
+            </span>
           </div>
 
           <div className="text-center md:text-right">
@@ -107,7 +114,7 @@ export default function LoginPage({ onLoginSuccess }) {
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md">
+                  <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-md">
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <h2 className="text-lg sm:text-xl font-extrabold text-[#113a72] uppercase tracking-tight">
@@ -217,13 +224,44 @@ export default function LoginPage({ onLoginSuccess }) {
           {/* Right Card: ĐĂNG NHẬP (Span 5) */}
           <div className="lg:col-span-5 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-6 sm:p-8 flex flex-col justify-center border border-white/50">
             {/* Top Lock Icon Badge */}
-            <div className="flex flex-col items-center mb-6">
-              <div className="w-14 h-14 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shadow-inner mb-3">
-                <Lock className="w-7 h-7" />
+            <div className="flex flex-col items-center mb-5">
+              <div className="w-13 h-13 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shadow-inner mb-2.5">
+                <Lock className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl font-black text-[#113a72] uppercase tracking-wide">
+              <h2 className="text-xl sm:text-2xl font-black text-[#113a72] uppercase tracking-wide">
                 ĐĂNG NHẬP
               </h2>
+            </div>
+
+            {/* Role Switcher Tabs */}
+            <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl mb-4 text-xs font-semibold text-slate-600">
+              <button
+                type="button"
+                onClick={() => { setRole('student'); setUsername('74dcht21272'); }}
+                className={`py-1.5 rounded-lg transition ${
+                  role === 'student' ? 'bg-white text-blue-700 shadow-xs font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                Sinh viên
+              </button>
+              <button
+                type="button"
+                onClick={() => { setRole('teacher'); setUsername('gv_tranvannam'); }}
+                className={`py-1.5 rounded-lg transition ${
+                  role === 'teacher' ? 'bg-white text-blue-700 shadow-xs font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                Giảng viên
+              </button>
+              <button
+                type="button"
+                onClick={() => setLookupOpen(true)}
+                className={`py-1.5 rounded-lg transition ${
+                  role === 'applicant' ? 'bg-white text-blue-700 shadow-xs font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                Tân sinh viên
+              </button>
             </div>
 
             {error && (
@@ -272,22 +310,24 @@ export default function LoginPage({ onLoginSuccess }) {
                 </button>
               </div>
 
-              {/* Helper Links */}
+              {/* Helper Links & Remember Me */}
               <div className="flex items-center justify-between text-xs pt-1 pb-1">
+                <label className="flex items-center gap-2 cursor-pointer text-slate-600 select-none">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="w-3.5 h-3.5 text-blue-600 rounded border-slate-300 focus:ring-blue-500"
+                  />
+                  <span>Ghi nhớ đăng nhập</span>
+                </label>
+
                 <button
                   type="button"
                   onClick={() => alert("Chức năng khôi phục mật khẩu qua email đã đăng ký.")}
                   className="text-blue-700 hover:text-blue-900 font-medium hover:underline"
                 >
-                  Quên mật khẩu
-                </button>
-                <button
-                  type="button"
-                  onClick={() => alert("Tổng đài hỗ trợ sinh viên: (024) 3854 4264 - Email: ctsv@utt.edu.vn")}
-                  className="text-blue-700 hover:text-blue-900 font-medium hover:underline flex items-center gap-1"
-                >
-                  <HelpCircle className="w-3.5 h-3.5" />
-                  Trợ giúp!
+                  Quên mật khẩu?
                 </button>
               </div>
 
@@ -300,7 +340,7 @@ export default function LoginPage({ onLoginSuccess }) {
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  "ĐĂNG NHẬP"
+                  "ĐĂNG NHẬP HỆ THỐNG"
                 )}
               </button>
 
@@ -313,7 +353,7 @@ export default function LoginPage({ onLoginSuccess }) {
                 <div className="w-5 h-5 bg-white/20 rounded-md flex items-center justify-center font-bold text-[10px]">
                   SSO
                 </div>
-                <span>Đăng nhập bằng SSO</span>
+                <span>Đăng nhập bằng tài khoản SSO</span>
               </button>
             </form>
           </div>
@@ -366,7 +406,7 @@ export default function LoginPage({ onLoginSuccess }) {
 
         {/* Small footer reference link */}
         <div className="mt-2 text-center md:text-left text-[11px] text-blue-300/60 font-mono">
-          https://daotao.utt.edu.vn/congthongtin/pages/forgetpass.aspx
+          Cổng thông tin Đào tạo & Tân sinh viên • Hệ thống bảo mật ISO 27001
         </div>
       </footer>
 

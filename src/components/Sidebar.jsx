@@ -14,9 +14,9 @@ import {
   Search, 
   ChevronRight,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  Grid
 } from 'lucide-react';
-import UttLogo from './UttLogo';
 import { mockUser } from '../data/mockData';
 
 export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLogout }) {
@@ -158,7 +158,22 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
         
         {/* Drawer Header */}
         <div className="px-6 py-5 bg-gradient-to-r from-[#0a1e3b] via-[#0d274d] to-[#0a1e3b] text-white flex items-center justify-between shadow-md flex-shrink-0">
-          <UttLogo light={true} />
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-400">
+              <Grid className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-sm text-white tracking-wide uppercase">
+                  DANH MỤC HỆ THỐNG
+                </span>
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/30 text-blue-200 border border-blue-400/20">
+                  PORTAL
+                </span>
+              </div>
+              <p className="text-[10px] text-slate-300">Cổng thông tin đào tạo & dịch vụ sinh viên</p>
+            </div>
+          </div>
 
           <button
             onClick={onClose}
