@@ -5,7 +5,6 @@ import { mockUser } from '../data/mockData';
 export default function ProfileView() {
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-8 space-y-7">
-      {/* Top Profile Card */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 pb-6 border-b border-slate-200">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
           <div className="relative">
@@ -41,9 +40,7 @@ export default function ProfileView() {
         </button>
       </div>
 
-      {/* Grid Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Academic Program */}
         <div className="space-y-4">
           <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
             <BookOpen className="w-4 h-4 text-blue-600" />
@@ -73,7 +70,6 @@ export default function ProfileView() {
           </div>
         </div>
 
-        {/* Academic Cumulative Results */}
         <div className="space-y-4">
           <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
             <Award className="w-4 h-4 text-amber-500" />

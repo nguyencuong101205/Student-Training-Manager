@@ -5,7 +5,6 @@ import { mockExamSchedule, mockUser } from '../data/mockData';
 export default function ExamScheduleView() {
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-7 space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
@@ -26,7 +25,6 @@ export default function ExamScheduleView() {
         </button>
       </div>
 
-      {/* Notice */}
       <div className="bg-rose-50 border border-rose-200 p-3.5 px-4 rounded-2xl text-xs text-rose-900 flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
         <p>
@@ -34,7 +32,6 @@ export default function ExamScheduleView() {
         </p>
       </div>
 
-      {/* Exam Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {mockExamSchedule.map((exam, idx) => (
           <div key={idx} className="p-5 rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:shadow-md transition">

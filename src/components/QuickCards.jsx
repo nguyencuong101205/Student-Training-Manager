@@ -47,12 +47,10 @@ export default function QuickCards({ onNavigate }) {
             onClick={() => onNavigate(card.view)}
             className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all duration-200 cursor-pointer flex items-center gap-4 group"
           >
-            {/* Colored square icon */}
             <div className={`w-13 h-13 rounded-2xl ${card.iconBg} text-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
               <Icon className="w-6 h-6" />
             </div>
 
-            {/* Labels */}
             <div className="flex flex-col flex-1">
               <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase leading-tight">
                 {card.category}

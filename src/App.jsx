@@ -5,7 +5,7 @@ import { mockUser } from './data/mockData';
 import { Layers } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('login'); // 'login' | 'home'
+  const [currentPage, setCurrentPage] = useState('login');
   const [user, setUser] = useState(mockUser);
 
   const handleLoginSuccess = (userData) => {
@@ -28,7 +28,6 @@ export default function App() {
         <HomePage user={user} onLogout={handleLogout} />
       )}
 
-      {/* Quick view switcher widget for easy navigation during review/development */}
       <div className="fixed bottom-3 right-3 z-50 flex items-center gap-1.5 bg-slate-900/90 hover:bg-slate-900 text-white text-xs px-3 py-1.5 rounded-full shadow-2xl backdrop-blur-md border border-slate-700/80 transition select-none">
         <Layers className="w-3.5 h-3.5 text-amber-400" />
         <span className="text-slate-400 hidden sm:inline">Chế độ xem:</span>

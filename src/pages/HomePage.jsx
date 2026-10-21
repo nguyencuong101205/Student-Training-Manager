@@ -17,7 +17,7 @@ import PortalFooter from '../components/PortalFooter';
 
 export default function HomePage({ user, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'schedule' | 'tuition' | 'registration' | 'profile' | 'grades' | 'one-stop' | 'exam-schedule'
+  const [currentView, setCurrentView] = useState('home');
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [isAppealOpen, setIsAppealOpen] = useState(false);
@@ -42,16 +42,9 @@ export default function HomePage({ user, onLogout }) {
       default:
         return (
           <div className="space-y-6">
-            {/* 1. Banner Tổng quan Sinh viên Thông minh */}
             <StudentWelcomeBanner onNavigate={setCurrentView} />
-
-            {/* 2. 4 Thẻ truy cập nhanh */}
             <QuickCards onNavigate={setCurrentView} />
-
-            {/* 3. Lịch học & Thời khóa biểu tuần trực tiếp trên trang chủ */}
             <ScheduleView />
-
-            {/* 4. Hai cột bảng tin Đào tạo & Nhà trường */}
             <NewsSection 
               onSelectArticle={setSelectedArticle} 
               searchQuery={searchQuery}
@@ -63,7 +56,6 @@ export default function HomePage({ user, onLogout }) {
 
   return (
     <div className="min-h-screen bg-[#edf2f8] flex flex-col font-sans text-slate-800">
-      {/* Modern Top Header with menu button (Clean typography, no logo) */}
       <Header
         user={user}
         onLogout={onLogout}
@@ -74,9 +66,7 @@ export default function HomePage({ user, onLogout }) {
         currentView={currentView}
       />
 
-      {/* Main Workspace */}
       <main className="flex-1 p-4 sm:p-6 lg:p-7 max-w-7xl mx-auto w-full">
-        {/* Breadcrumb if not in home view */}
         {currentView !== 'home' && (
           <div className="mb-6 flex items-center justify-between bg-white px-5 py-3.5 rounded-2xl border border-slate-200/90 shadow-xs">
             <div className="flex items-center gap-2 text-xs text-slate-500">
@@ -110,10 +100,8 @@ export default function HomePage({ user, onLogout }) {
         {renderContent()}
       </main>
 
-      {/* Portal Footer */}
       <PortalFooter />
 
-      {/* Blurred Overlay Full-Page Menu Drawer with exact UTT Tree Nodes */}
       <Sidebar
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
@@ -126,13 +114,11 @@ export default function HomePage({ user, onLogout }) {
         onOpenAppeal={() => setIsAppealOpen(true)}
       />
 
-      {/* Article Detail Modal */}
       <ArticleModal 
         article={selectedArticle} 
         onClose={() => setSelectedArticle(null)} 
       />
 
-      {/* Đăng ký xin phúc khảo Modal */}
       <AppealModal 
         isOpen={isAppealOpen} 
         onClose={() => setIsAppealOpen(false)} 

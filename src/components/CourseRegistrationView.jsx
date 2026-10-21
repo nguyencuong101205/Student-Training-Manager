@@ -26,7 +26,6 @@ export default function CourseRegistrationView() {
 
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-7 space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
@@ -36,7 +35,6 @@ export default function CourseRegistrationView() {
           <p className="text-xs text-slate-500 mt-1">Đợt đăng ký tín chỉ chuyên ngành Công nghệ thông tin • Giới hạn: 12 - 24 tín chỉ</p>
         </div>
 
-        {/* Credit count badge */}
         <div className="bg-blue-50 border border-blue-200 px-4 py-2.5 rounded-2xl flex items-center gap-3">
           <div>
             <span className="text-[10px] text-slate-500 uppercase font-bold block leading-none">Đã đăng ký</span>
@@ -51,7 +49,6 @@ export default function CourseRegistrationView() {
         </div>
       </div>
 
-      {/* Info notice */}
       <div className="bg-amber-50/70 border border-amber-200 p-3.5 px-4 rounded-2xl text-xs text-amber-900 flex items-start gap-2.5">
         <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
         <p>
@@ -59,7 +56,6 @@ export default function CourseRegistrationView() {
         </p>
       </div>
 
-      {/* Search box */}
       <div className="max-w-md">
         <div className="relative">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -73,7 +69,6 @@ export default function CourseRegistrationView() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto custom-light-scroll rounded-2xl border border-slate-200">
         <table className="w-full text-left text-xs border-collapse">
           <thead>

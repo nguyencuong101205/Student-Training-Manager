@@ -36,7 +36,6 @@ export default function AppealModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn">
       <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
-        {/* Header */}
         <div className="bg-[#12315a] px-6 py-4 flex items-center justify-between text-white">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold">
@@ -55,9 +54,7 @@ export default function AppealModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Form and list */}
         <div className="p-6 overflow-y-auto custom-light-scroll space-y-5 text-xs text-slate-700">
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-3.5 bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide">
               Gửi đơn phúc khảo mới
@@ -111,7 +108,6 @@ export default function AppealModal({ isOpen, onClose }) {
             )}
           </form>
 
-          {/* History */}
           <div className="space-y-2.5">
             <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide">
               Lịch sử đơn phúc khảo đã gửi

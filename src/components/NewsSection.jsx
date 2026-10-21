@@ -6,7 +6,6 @@ export default function NewsSection({ onSelectArticle, searchQuery = '' }) {
   const [showAllTraining, setShowAllTraining] = useState(false);
   const [showAllSchool, setShowAllSchool] = useState(false);
 
-  // Filter based on search query
   const filterList = (list) => {
     if (!searchQuery) return list;
     return list.filter(item => 
@@ -21,9 +20,7 @@ export default function NewsSection({ onSelectArticle, searchQuery = '' }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-      {/* Column 1: TIN ĐÀO TẠO */}
       <div className="bg-white rounded-2xl shadow-xs border border-slate-200/90 p-5 sm:p-6 flex flex-col">
-        {/* Section Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <div className="w-1.5 h-5 bg-[#1b5fc1] rounded-full"></div>
@@ -39,7 +36,6 @@ export default function NewsSection({ onSelectArticle, searchQuery = '' }) {
           </button>
         </div>
 
-        {/* News Items List */}
         <div className="divide-y divide-slate-100 flex-1">
           {trainingNews.slice(0, showAllTraining ? undefined : 8).map((news) => (
             <div
@@ -68,9 +64,7 @@ export default function NewsSection({ onSelectArticle, searchQuery = '' }) {
         </div>
       </div>
 
-      {/* Column 2: TIN NHÀ TRƯỜNG & HOẠT ĐỘNG SINH VIÊN */}
       <div className="space-y-6">
-        {/* TIN NHÀ TRƯỜNG */}
         <div className="bg-white rounded-2xl shadow-xs border border-slate-200/90 p-5 sm:p-6 flex flex-col">
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div className="flex items-center gap-2.5">
@@ -115,7 +109,6 @@ export default function NewsSection({ onSelectArticle, searchQuery = '' }) {
           </div>
         </div>
 
-        {/* HOẠT ĐỘNG SINH VIÊN */}
         <div className="bg-white rounded-2xl shadow-xs border border-slate-200/90 p-5 sm:p-6 flex flex-col">
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div className="flex items-center gap-2.5">

@@ -21,7 +21,6 @@ export default function ScheduleView() {
 
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-7 space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
@@ -33,7 +32,6 @@ export default function ScheduleView() {
           </p>
         </div>
 
-        {/* Week switcher & Actions */}
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs font-bold text-slate-700">
             <button 
@@ -61,7 +59,6 @@ export default function ScheduleView() {
         </div>
       </div>
 
-      {/* Day Filter Pills */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
         {days.map((d) => (
           <button
@@ -78,7 +75,6 @@ export default function ScheduleView() {
         ))}
       </div>
 
-      {/* Timetable Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredSchedule.map((item, index) => {
           const isToday = item.day === 'Thứ 4';

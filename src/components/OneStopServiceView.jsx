@@ -41,7 +41,6 @@ export default function OneStopServiceView() {
 
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-7 space-y-7">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
@@ -60,9 +59,7 @@ export default function OneStopServiceView() {
         </div>
       </div>
 
-      {/* Two columns: Form & Tracking */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
-        {/* Form request (Span 5) */}
         <div className="lg:col-span-5 bg-slate-50/80 p-5 rounded-3xl border border-slate-200 space-y-4">
           <div className="flex items-center gap-2 text-slate-900 font-extrabold text-sm uppercase">
             <Plus className="w-4 h-4 text-blue-600" />
@@ -130,7 +127,6 @@ export default function OneStopServiceView() {
           </form>
         </div>
 
-        {/* Tracking list (Span 7) */}
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center justify-between pb-2 border-b">
             <h4 className="font-extrabold text-slate-900 text-sm uppercase">

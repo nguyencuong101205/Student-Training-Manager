@@ -31,7 +31,6 @@ export default function TuitionView() {
         </div>
       </div>
 
-      {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Học phí kỳ hiện tại</span>
@@ -52,7 +51,6 @@ export default function TuitionView() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto custom-light-scroll rounded-2xl border border-slate-200">
         <table className="w-full text-left text-xs border-collapse">
           <thead>

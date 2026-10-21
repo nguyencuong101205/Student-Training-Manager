@@ -3,14 +3,11 @@ import React from 'react';
 export default function UttLogo({ className = "h-10", light = false, compact = false }) {
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* Modern High-End Emblem Icon */}
       <div className="relative flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-xl bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 p-0.5 shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform">
         <div className="w-full h-full bg-[#0a1e3b] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-          {/* Subtle glow / beam effect */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
           
           <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none">
-            {/* Academic Cap / Shield / Bridge Fusion */}
             <path
               d="M20 6L33 13L20 20L7 13L20 6Z"
               fill="url(#goldGrad)"
@@ -19,14 +16,12 @@ export default function UttLogo({ className = "h-10", light = false, compact = f
               d="M11 16.5V23.5C11 27.5 14.5 31 20 33C25.5 31 29 27.5 29 23.5V16.5L20 21.5L11 16.5Z"
               fill="url(#orangeGrad)"
             />
-            {/* Bridge arch cutout line */}
             <path
               d="M15 25C17 23 23 23 25 25"
               stroke="#ffffff"
               strokeWidth="2"
               strokeLinecap="round"
             />
-            {/* Center star */}
             <circle cx="20" cy="20" r="1.5" fill="#ffffff" />
 
             <defs>

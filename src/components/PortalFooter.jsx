@@ -6,7 +6,6 @@ export default function PortalFooter() {
     <footer className="mt-12 border-t border-slate-200/80 bg-white/70 backdrop-blur-md pt-8 pb-10 text-xs text-slate-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-200">
-          {/* Col 1: System info */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="font-black text-sm text-slate-900 tracking-wider uppercase">
@@ -25,7 +24,6 @@ export default function PortalFooter() {
             </div>
           </div>
 
-          {/* Col 2: Liên hệ đào tạo */}
           <div className="space-y-2.5">
             <h4 className="font-bold text-slate-900 uppercase tracking-wider text-[11px]">
               PHÒNG ĐÀO TẠO
@@ -46,7 +44,6 @@ export default function PortalFooter() {
             </div>
           </div>
 
-          {/* Col 3: Hỗ trợ sinh viên & một cửa */}
           <div className="space-y-2.5">
             <h4 className="font-bold text-slate-900 uppercase tracking-wider text-[11px]">
               DỊCH VỤ SINH VIÊN
@@ -59,7 +56,6 @@ export default function PortalFooter() {
             </ul>
           </div>
 
-          {/* Col 4: Cơ sở đào tạo */}
           <div className="space-y-2.5">
             <h4 className="font-bold text-slate-900 uppercase tracking-wider text-[11px]">
               CÁC CƠ SỞ ĐÀO TẠO
@@ -72,7 +68,6 @@ export default function PortalFooter() {
           </div>
         </div>
 
-        {/* Bottom copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
           <div>
             Bản quyền © 2026 Cổng thông tin đào tạo sinh viên. Tất cả các quyền được bảo lưu.

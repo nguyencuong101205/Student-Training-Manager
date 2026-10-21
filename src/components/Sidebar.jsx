@@ -20,7 +20,6 @@ import { mockUser } from '../data/mockData';
 export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLogout, onOpenAppeal }) {
   const [filterQuery, setFilterQuery] = useState('');
   
-  // Track open state of submenus (Default open for Góc học tập & Đăng ký học to match screenshots)
   const [openSections, setOpenSections] = useState({
     profile: false,
     learning: true,
@@ -37,7 +36,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
     }));
   };
 
-  // Close on ESC key press
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -48,7 +46,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Handle scroll lock safely without causing layout shift
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -62,7 +59,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
 
   if (!isOpen) return null;
 
-  // Exact menu categories matching user screenshots
   const menuList = [
     {
       id: 'home',
@@ -95,14 +91,14 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
     {
       id: 'learning',
       label: 'Góc học tập',
-      icon: Boxes, // 3-cube blocks icon matching Image 1
+      icon: Boxes,
       hasSub: true,
       subItems: [
         { label: 'Tra cứu điểm', view: 'grades' },
         { label: 'Chương trình học', view: 'profile' },
         { 
           label: 'Đăng ký xin phúc khảo', 
-          highlight: true, // Orange text & dot as shown in screenshot 1
+          highlight: true,
           action: () => {
             onClose();
             if (onOpenAppeal) onOpenAppeal();
@@ -115,7 +111,7 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
     {
       id: 'registration',
       label: 'Đăng ký học',
-      isBadgeR: true, // Circle R badge matching Image 2
+      isBadgeR: true,
       hasSub: true,
       subItems: [
         { label: 'Đăng ký', view: 'registration' },
@@ -168,17 +164,13 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
 
   return (
     <div className="fixed inset-0 z-50 flex animate-fadeIn">
-      {/* Blurred Backdrop */}
       <div 
         onClick={onClose}
         className="fixed inset-0 bg-[#07152b]/60 backdrop-blur-md transition-all cursor-pointer"
         aria-hidden="true"
       />
 
-      {/* Slide-out Menu Panel with UTT Navy Theme */}
       <div className="relative w-full max-w-sm sm:max-w-md bg-[#162f59] text-slate-100 h-full shadow-2xl flex flex-col z-10 border-r border-[#20457e] animate-slideRight overflow-hidden">
-        
-        {/* Drawer Header */}
         <div className="px-6 py-4.5 bg-[#102344] text-white flex items-center justify-between shadow-md border-b border-[#20457e] flex-shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-400">
@@ -201,7 +193,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
           </button>
         </div>
 
-        {/* Quick Search */}
         <div className="p-3.5 px-5 bg-[#12284c] border-b border-[#20457e] flex-shrink-0">
           <div className="relative">
             <Search className="w-3.5 h-3.5 text-blue-300 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -215,7 +206,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
           </div>
         </div>
 
-        {/* Menu Navigation Items with Tree Timeline Structure */}
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1 select-none custom-dark-scroll pr-2">
           {menuList.map((item) => {
             const Icon = item.icon;
@@ -224,7 +214,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
 
             return (
               <div key={item.id} className="space-y-0.5">
-                {/* Parent Item */}
                 <button
                   onClick={() => {
                     if (item.hasSub) {
@@ -243,7 +232,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    {/* Icon or Circle R Badge */}
                     {item.isBadgeR ? (
                       <div className="w-6 h-6 rounded-full bg-white text-[#162f59] flex items-center justify-center font-black text-xs shadow-xs">
                         R
@@ -261,7 +249,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
                   )}
                 </button>
 
-                {/* Submenu with Tree Timeline Line & Circular Dots matching screenshots */}
                 {item.hasSub && isOpenSection && (
                   <div className="relative pl-6 ml-4 my-1 border-l-2 border-blue-400/40 space-y-1 py-1">
                     {item.subItems.map((sub, sIdx) => {
@@ -273,14 +260,12 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
                           onClick={() => handleSubClick(sub)}
                           className="group relative flex items-center gap-3 py-1.5 px-2 rounded-lg cursor-pointer transition"
                         >
-                          {/* Circular Dot on the vertical line */}
                           <div className={`absolute -left-[31px] w-2.5 h-2.5 rounded-full transition-all border-2 border-[#162f59] ${
                             isSubActive 
                               ? 'bg-[#f97316] ring-2 ring-orange-500/30 scale-125' 
                               : 'bg-[#5b83ca] group-hover:bg-[#f97316]'
                           }`} />
 
-                          {/* Subitem text */}
                           <span className={`text-xs font-medium transition ${
                             isSubActive 
                               ? 'text-[#f97316] font-bold' 
@@ -298,7 +283,6 @@ export default function Sidebar({ isOpen, onClose, currentView, onNavigate, onLo
           })}
         </div>
 
-        {/* Bottom User Card */}
         <div className="p-4 bg-[#102344] border-t border-[#20457e] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-2.5 overflow-hidden">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 text-slate-950 font-black flex items-center justify-center text-xs shadow-sm">

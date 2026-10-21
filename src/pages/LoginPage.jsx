@@ -25,7 +25,6 @@ export default function LoginPage({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Modals
   const [lookupOpen, setLookupOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
 
@@ -60,14 +59,12 @@ export default function LoginPage({ onLoginSuccess }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0c397b] via-[#104b9c] to-[#0a2958] text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
-      {/* Background Architectural & Academic Watermarks */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.06] flex items-center justify-center overflow-hidden">
         <svg className="w-[1200px] h-[1200px] text-white" viewBox="0 0 500 500" fill="currentColor">
           <path d="M50 450 H450 V430 H50 Z M80 430 V220 H110 V430 Z M150 430 V220 H180 V430 Z M220 430 V220 H250 V430 Z M290 430 V220 H320 V430 Z M360 430 V220 H390 V430 Z M60 220 L250 120 L440 220 Z M200 120 A50 50 0 0 1 300 120 Z" />
         </svg>
       </div>
 
-      {/* Floating Graduation Cap Watermarks */}
       <div className="absolute top-12 left-10 opacity-10 pointer-events-none hidden md:block">
         <GraduationCap className="w-36 h-36 text-white rotate-[-15deg]" />
       </div>
@@ -75,7 +72,6 @@ export default function LoginPage({ onLoginSuccess }) {
         <GraduationCap className="w-48 h-48 text-white rotate-[20deg]" />
       </div>
 
-      {/* Top Banner / Header (Clean typography, No logo) */}
       <header className="relative z-10 pt-6 px-4 sm:px-8 max-w-7xl mx-auto w-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 flex items-center gap-2.5 shadow-sm">
@@ -98,13 +94,10 @@ export default function LoginPage({ onLoginSuccess }) {
         </div>
       </header>
 
-      {/* Main Center Content matching Image 1 */}
       <main className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Left Card: DÀNH CHO TÂN SINH VIÊN NHẬP HỌC (Span 7) */}
           <div className="lg:col-span-7 bg-white rounded-3xl shadow-2xl p-6 sm:p-8 flex flex-col justify-between border border-white/60 relative overflow-hidden">
-            {/* Header section with graphic */}
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
@@ -123,7 +116,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 </p>
               </div>
 
-              {/* Illustration graphic */}
               <div className="hidden sm:flex flex-col items-center flex-shrink-0">
                 <div className="relative">
                   <div className="w-20 h-20 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-center shadow-inner">
@@ -136,9 +128,7 @@ export default function LoginPage({ onLoginSuccess }) {
               </div>
             </div>
 
-            {/* 3 Step Pipeline Cards */}
             <div className="my-6 grid grid-cols-1 sm:grid-cols-3 gap-3 relative">
-              {/* Step 1 */}
               <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 flex flex-col items-center text-center relative group hover:border-blue-400 hover:bg-blue-50/50 transition">
                 <div className="w-7 h-7 rounded-full bg-[#1b5fc1] text-white font-black text-xs flex items-center justify-center mb-2 shadow">
                   1
@@ -154,7 +144,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 </p>
               </div>
 
-              {/* Step 2 */}
               <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 flex flex-col items-center text-center relative group hover:border-amber-400 hover:bg-amber-50/50 transition">
                 <div className="w-7 h-7 rounded-full bg-[#1b5fc1] text-white font-black text-xs flex items-center justify-center mb-2 shadow">
                   2
@@ -170,7 +159,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 </p>
               </div>
 
-              {/* Step 3 */}
               <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 flex flex-col items-center text-center relative group hover:border-emerald-400 hover:bg-emerald-50/50 transition">
                 <div className="w-7 h-7 rounded-full bg-[#1b5fc1] text-white font-black text-xs flex items-center justify-center mb-2 shadow">
                   3
@@ -187,7 +175,6 @@ export default function LoginPage({ onLoginSuccess }) {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               <button
                 type="button"
@@ -215,9 +202,7 @@ export default function LoginPage({ onLoginSuccess }) {
             </div>
           </div>
 
-          {/* Right Card: ĐĂNG NHẬP (Span 5) */}
           <div className="lg:col-span-5 bg-white rounded-3xl shadow-2xl p-6 sm:p-8 flex flex-col justify-center border border-white/60">
-            {/* Top Lock Icon Badge */}
             <div className="flex flex-col items-center mb-6">
               <div className="w-13 h-13 rounded-full bg-blue-100 text-[#1b5fc1] flex items-center justify-center shadow-inner mb-3">
                 <Lock className="w-6 h-6" />
@@ -233,9 +218,7 @@ export default function LoginPage({ onLoginSuccess }) {
               </div>
             )}
 
-            {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Username Input matching Image 1 */}
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                   <User className="w-5 h-5" />
@@ -250,7 +233,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 />
               </div>
 
-              {/* Password Input matching Image 1 */}
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                   <Lock className="w-5 h-5" />
@@ -273,7 +255,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 </button>
               </div>
 
-              {/* Helper Links */}
               <div className="flex items-center justify-between text-xs pt-1 pb-1">
                 <button
                   type="button"
@@ -292,7 +273,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 </button>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={loading}
@@ -305,7 +285,6 @@ export default function LoginPage({ onLoginSuccess }) {
                 )}
               </button>
 
-              {/* SSO Button */}
               <button
                 type="button"
                 onClick={handleSSO}
@@ -321,7 +300,6 @@ export default function LoginPage({ onLoginSuccess }) {
         </div>
       </main>
 
-      {/* Bottom Assurance Bar */}
       <footer className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-6">
         <div className="bg-[#0b2b5c]/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 sm:p-5 text-white grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-center gap-3">
@@ -365,13 +343,11 @@ export default function LoginPage({ onLoginSuccess }) {
           </div>
         </div>
 
-        {/* Small footer reference link */}
         <div className="mt-2 text-center md:text-left text-[11px] text-blue-300/60 font-mono">
           https://daotao.utt.edu.vn/congthongtin/pages/forgetpass.aspx
         </div>
       </footer>
 
-      {/* Interactive Modals */}
       <StudentLookupModal isOpen={lookupOpen} onClose={() => setLookupOpen(false)} />
       <PaymentModal isOpen={paymentOpen} onClose={() => setPaymentOpen(false)} />
     </div>

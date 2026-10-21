@@ -5,7 +5,6 @@ import { mockGrades, mockUser } from '../data/mockData';
 export default function GradeLookupView() {
   return (
     <div className="bg-white rounded-3xl shadow-xs border border-slate-200/90 p-6 sm:p-7 space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
@@ -28,7 +27,6 @@ export default function GradeLookupView() {
         </div>
       </div>
 
-      {/* Summary KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Điểm TB Học kỳ (Hệ 4)</span>
@@ -55,7 +53,6 @@ export default function GradeLookupView() {
         </div>
       </div>
 
-      {/* Grade Details Table */}
       <div className="overflow-x-auto custom-light-scroll rounded-2xl border border-slate-200">
         <table className="w-full text-left text-xs border-collapse">
           <thead>

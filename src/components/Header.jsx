@@ -15,7 +15,6 @@ export default function Header({
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
 
-  // Live quick search matching
   const matchingNews = searchQuery.trim() 
     ? [...mockTrainingNews, ...mockSchoolNews].filter(n => n.title.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 4)
     : [];
@@ -23,7 +22,6 @@ export default function Header({
   return (
     <header className="bg-[#12315a] text-white sticky top-0 z-40 shadow-sm border-b border-[#1a4277] select-none">
       <div className="flex items-center justify-between px-4 sm:px-6 py-2 h-16 max-w-7xl mx-auto w-full">
-        {/* Left: Hamburger & Clean Title */}
         <div className="flex items-center gap-3 sm:gap-4">
           <button
             onClick={onToggleSidebar}
@@ -52,7 +50,6 @@ export default function Header({
           </div>
         </div>
 
-        {/* Center: Search Bar with Live Instant Results */}
         <div className="hidden md:flex items-center flex-1 max-w-md mx-6 relative">
           <div className="relative w-full">
             <input
@@ -67,7 +64,6 @@ export default function Header({
             <Search className="w-4 h-4 text-blue-200 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
 
-          {/* Instant Search Popup */}
           {searchFocused && searchQuery.trim() && (
             <div className="absolute top-12 left-0 right-0 bg-white rounded-2xl shadow-2xl py-3 text-slate-800 text-xs border border-slate-200 z-50 animate-fadeIn overflow-hidden">
               <div className="px-4 pb-2 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
@@ -97,9 +93,7 @@ export default function Header({
           )}
         </div>
 
-        {/* Right: Notifications & User Profile */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Notification Button */}
           <div className="relative">
             <button 
               onClick={() => setNotificationOpen(!notificationOpen)}
@@ -133,7 +127,6 @@ export default function Header({
             )}
           </div>
 
-          {/* User Profile dropdown */}
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}

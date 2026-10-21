@@ -13,7 +13,6 @@ export default function StudentLookupModal({ isOpen, onClose }) {
     if (!cccd.trim()) return;
 
     setSearched(true);
-    // Mock candidate data
     setResult({
       cccd: cccd,
       fullName: "NGUYỄN VĂN AN",

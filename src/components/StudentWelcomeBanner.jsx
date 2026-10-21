@@ -5,14 +5,11 @@ import { mockUser } from '../data/mockData';
 export default function StudentWelcomeBanner({ onNavigate }) {
   return (
     <div className="mb-6 space-y-3.5">
-      {/* Main Student Greeting & Quick Metrics Card */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0d2a54] via-[#143e77] to-[#1a5198] text-white p-6 sm:p-7 shadow-sm border border-blue-400/20">
-        {/* Subtle decorative circles */}
         <div className="absolute -right-12 -bottom-12 w-64 h-64 bg-blue-400/10 rounded-full blur-2xl pointer-events-none"></div>
         <div className="absolute right-36 -top-12 w-48 h-48 bg-amber-400/10 rounded-full blur-xl pointer-events-none"></div>
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          {/* Left Greeting & Student Details */}
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 flex items-center gap-1.5 shadow-2xs">
@@ -33,9 +30,7 @@ export default function StudentWelcomeBanner({ onNavigate }) {
               </p>
             </div>
 
-            {/* Quick Metrics Chips */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              {/* Metric 1: GPA */}
               <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15 flex items-center gap-3 shadow-xs">
                 <div className="w-8 h-8 rounded-xl bg-amber-400/20 flex items-center justify-center flex-shrink-0 text-amber-400">
                   <Award className="w-4.5 h-4.5" />
@@ -46,7 +41,6 @@ export default function StudentWelcomeBanner({ onNavigate }) {
                 </div>
               </div>
 
-              {/* Metric 2: Tín chỉ */}
               <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15 flex items-center gap-3 shadow-xs">
                 <div className="w-8 h-8 rounded-xl bg-cyan-400/20 flex items-center justify-center flex-shrink-0 text-cyan-400">
                   <BookOpen className="w-4.5 h-4.5" />
@@ -57,7 +51,6 @@ export default function StudentWelcomeBanner({ onNavigate }) {
                 </div>
               </div>
 
-              {/* Metric 3: Học phí */}
               <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15 flex items-center gap-3 shadow-xs">
                 <div className="w-8 h-8 rounded-xl bg-emerald-400/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
                   <CheckCircle className="w-4.5 h-4.5" />
@@ -70,7 +63,6 @@ export default function StudentWelcomeBanner({ onNavigate }) {
             </div>
           </div>
 
-          {/* Right Action buttons */}
           <div className="flex flex-row lg:flex-col gap-2.5 flex-shrink-0">
             <button
               onClick={() => onNavigate('schedule')}
@@ -91,7 +83,6 @@ export default function StudentWelcomeBanner({ onNavigate }) {
         </div>
       </div>
 
-      {/* Thanh thông báo tiết học hôm nay */}
       <div className="bg-amber-50/80 border border-amber-200/90 rounded-2xl p-3.5 px-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-slate-800 shadow-2xs">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center flex-shrink-0 font-bold shadow-xs">
