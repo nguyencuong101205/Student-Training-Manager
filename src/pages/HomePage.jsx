@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import StudentWelcomeBanner from '../components/StudentWelcomeBanner';
 import QuickCards from '../components/QuickCards';
 import NewsSection from '../components/NewsSection';
 import ScheduleView from '../components/ScheduleView';
@@ -32,8 +31,10 @@ export default function HomePage({ user, onLogout }) {
       default:
         return (
           <>
-            <StudentWelcomeBanner onNavigate={setCurrentView} />
+            {/* 4 Quick Access Action Cards */}
             <QuickCards onNavigate={setCurrentView} />
+
+            {/* 2 Main News Columns */}
             <NewsSection 
               onSelectArticle={setSelectedArticle} 
               searchQuery={searchQuery}
@@ -44,8 +45,8 @@ export default function HomePage({ user, onLogout }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f6fa] flex flex-col font-sans text-slate-800">
-      {/* Modern Top Header with menu button (No Logo, clean typography) */}
+    <div className="min-h-screen bg-[#edf2f8] flex flex-col font-sans text-slate-800">
+      {/* Modern Top Header with menu button (Clean typography, no logo) */}
       <Header
         user={user}
         onLogout={onLogout}
@@ -56,8 +57,8 @@ export default function HomePage({ user, onLogout }) {
         currentView={currentView}
       />
 
-      {/* Full-width Main Workspace */}
-      <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
+      {/* Main Workspace matching reference Image 2 */}
+      <main className="flex-1 p-4 sm:p-6 lg:p-7 max-w-7xl mx-auto w-full">
         {/* Breadcrumb if not in home view */}
         {currentView !== 'home' && (
           <div className="mb-6 flex items-center justify-between bg-white px-5 py-3.5 rounded-2xl border border-slate-200/90 shadow-xs">
@@ -69,7 +70,7 @@ export default function HomePage({ user, onLogout }) {
                 Trang chủ
               </button>
               <span>/</span>
-              <span className="text-blue-700 font-extrabold capitalize text-xs">
+              <span className="text-[#1b5fc1] font-extrabold capitalize text-xs">
                 {currentView === 'schedule' && 'Thời khóa biểu tuần'}
                 {currentView === 'tuition' && 'Tra cứu công nợ & học phí'}
                 {currentView === 'registration' && 'Đăng ký học phần'}
@@ -79,7 +80,7 @@ export default function HomePage({ user, onLogout }) {
 
             <button
               onClick={() => setCurrentView('home')}
-              className="text-xs font-bold text-blue-600 hover:text-blue-800 px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 transition active:scale-95"
+              className="text-xs font-bold text-[#1b5fc1] hover:text-blue-800 px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 transition active:scale-95"
             >
               ← Quay lại trang chủ
             </button>
@@ -89,7 +90,7 @@ export default function HomePage({ user, onLogout }) {
         {renderContent()}
       </main>
 
-      {/* Comprehensive Portal Footer */}
+      {/* Portal Footer */}
       <PortalFooter />
 
       {/* Blurred Overlay Full-Page Menu Drawer */}

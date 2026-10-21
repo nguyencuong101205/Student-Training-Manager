@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Calendar, Wallet, Newspaper } from 'lucide-react';
+import { BookOpen, Calendar, Wallet, Newspaper, ChevronRight } from 'lucide-react';
 
 export default function QuickCards({ onNavigate }) {
   const cards = [
@@ -8,8 +8,7 @@ export default function QuickCards({ onNavigate }) {
       category: 'HỌC TẬP',
       title: 'Đăng ký học',
       icon: BookOpen,
-      iconBg: 'bg-blue-600',
-      textColor: 'text-blue-600',
+      iconBg: 'bg-[#2563eb]',
       view: 'registration'
     },
     {
@@ -17,8 +16,7 @@ export default function QuickCards({ onNavigate }) {
       category: 'LỊCH',
       title: 'Thời khóa biểu',
       icon: Calendar,
-      iconBg: 'bg-amber-500',
-      textColor: 'text-amber-500',
+      iconBg: 'bg-[#f59e0b]',
       view: 'schedule'
     },
     {
@@ -26,8 +24,7 @@ export default function QuickCards({ onNavigate }) {
       category: 'TÀI CHÍNH',
       title: 'Học phí',
       icon: Wallet,
-      iconBg: 'bg-emerald-600',
-      textColor: 'text-emerald-600',
+      iconBg: 'bg-[#10b981]',
       view: 'tuition'
     },
     {
@@ -35,8 +32,7 @@ export default function QuickCards({ onNavigate }) {
       category: 'THÔNG TIN',
       title: 'Tin tức & thông báo',
       icon: Newspaper,
-      iconBg: 'bg-rose-600',
-      textColor: 'text-rose-600',
+      iconBg: 'bg-[#ef4444]',
       view: 'home'
     }
   ];
@@ -49,19 +45,24 @@ export default function QuickCards({ onNavigate }) {
           <div
             key={card.id}
             onClick={() => onNavigate(card.view)}
-            className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 hover:shadow-md hover:border-blue-300 transition-all cursor-pointer flex items-center gap-4 group"
+            className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all duration-200 cursor-pointer flex items-center gap-4 group"
           >
-            <div className={`w-13 h-13 rounded-2xl ${card.iconBg} text-white flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform`}>
+            {/* Colored square icon */}
+            <div className={`w-13 h-13 rounded-2xl ${card.iconBg} text-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
               <Icon className="w-6 h-6" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-[11px] font-semibold text-slate-400 tracking-wider uppercase">
+
+            {/* Labels */}
+            <div className="flex flex-col flex-1">
+              <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase leading-tight">
                 {card.category}
               </span>
-              <span className="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+              <span className="text-sm sm:text-base font-extrabold text-slate-800 group-hover:text-blue-700 transition-colors mt-0.5">
                 {card.title}
               </span>
             </div>
+
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
           </div>
         );
       })}
