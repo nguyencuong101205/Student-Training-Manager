@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import StudentWelcomeBanner from '../components/StudentWelcomeBanner';
 import QuickCards from '../components/QuickCards';
-import NewsSection from '../components/NewsSection';
 import ScheduleView from '../components/ScheduleView';
+import NewsSection from '../components/NewsSection';
 import TuitionView from '../components/TuitionView';
 import CourseRegistrationView from '../components/CourseRegistrationView';
 import ProfileView from '../components/ProfileView';
@@ -19,27 +20,33 @@ export default function HomePage({ user, onLogout }) {
 
   const renderContent = () => {
     switch (currentView) {
-      case 'schedule':
-        return <ScheduleView />;
       case 'tuition':
         return <TuitionView />;
       case 'registration':
         return <CourseRegistrationView />;
       case 'profile':
         return <ProfileView />;
+      case 'schedule':
+        return <ScheduleView />;
       case 'home':
       default:
         return (
-          <>
-            {/* 4 Quick Access Action Cards */}
+          <div className="space-y-6">
+            {/* 1. Banner Tổng quan Sinh viên Thông minh */}
+            <StudentWelcomeBanner onNavigate={setCurrentView} />
+
+            {/* 2. 4 Thẻ truy cập nhanh */}
             <QuickCards onNavigate={setCurrentView} />
 
-            {/* 2 Main News Columns */}
+            {/* 3. Lịch học & Thời khóa biểu tuần trực tiếp trên trang chủ */}
+            <ScheduleView />
+
+            {/* 4. Hai cột bảng tin Đào tạo & Nhà trường */}
             <NewsSection 
               onSelectArticle={setSelectedArticle} 
               searchQuery={searchQuery}
             />
-          </>
+          </div>
         );
     }
   };
@@ -57,7 +64,7 @@ export default function HomePage({ user, onLogout }) {
         currentView={currentView}
       />
 
-      {/* Main Workspace matching reference Image 2 */}
+      {/* Main Workspace */}
       <main className="flex-1 p-4 sm:p-6 lg:p-7 max-w-7xl mx-auto w-full">
         {/* Breadcrumb if not in home view */}
         {currentView !== 'home' && (
