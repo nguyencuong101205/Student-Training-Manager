@@ -40,8 +40,8 @@ export default function HomePage({ user, onLogout }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#edf2f8] flex flex-col font-sans text-slate-800">
-      {/* Top Navbar */}
+    <div className="min-h-screen bg-[#f3f6fa] flex flex-col font-sans text-slate-800">
+      {/* Modern Top Header */}
       <Header
         user={user}
         onLogout={onLogout}
@@ -49,11 +49,12 @@ export default function HomePage({ user, onLogout }) {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onNavigate={setCurrentView}
+        currentView={currentView}
       />
 
       {/* Main Container */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar */}
+        {/* Redesigned Modern Light Sidebar */}
         <Sidebar
           isOpen={sidebarOpen}
           currentView={currentView}
@@ -64,13 +65,14 @@ export default function HomePage({ user, onLogout }) {
               setSidebarOpen(false);
             }
           }}
+          onLogout={onLogout}
         />
 
         {/* Dynamic Main Workspace */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-7 max-w-[1600px] mx-auto w-full">
           {/* Breadcrumb if not in home view */}
           {currentView !== 'home' && (
-            <div className="mb-4 flex items-center gap-2 text-xs text-slate-500">
+            <div className="mb-5 flex items-center gap-2 text-xs text-slate-500 bg-white px-4 py-2.5 rounded-xl border border-slate-200/80 shadow-xs">
               <button 
                 onClick={() => setCurrentView('home')} 
                 className="hover:text-blue-600 font-semibold"
@@ -78,11 +80,11 @@ export default function HomePage({ user, onLogout }) {
                 Trang chủ
               </button>
               <span>/</span>
-              <span className="text-slate-800 font-medium capitalize">
-                {currentView === 'schedule' && 'Thời khóa biểu'}
-                {currentView === 'tuition' && 'Tra cứu học phí'}
-                {currentView === 'registration' && 'Đăng ký học'}
-                {currentView === 'profile' && 'Hồ sơ sinh viên'}
+              <span className="text-slate-800 font-bold capitalize">
+                {currentView === 'schedule' && 'Thời khóa biểu tuần'}
+                {currentView === 'tuition' && 'Tra cứu công nợ & học phí'}
+                {currentView === 'registration' && 'Đăng ký học phần'}
+                {currentView === 'profile' && 'Hồ sơ cá nhân & Kết quả học tập'}
               </span>
             </div>
           )}

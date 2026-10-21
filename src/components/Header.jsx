@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Search, ChevronDown, User, LogOut, Bell, Shield, Key } from 'lucide-react';
+import { Menu, Search, ChevronDown, User, LogOut, Bell, Shield, Key, Sparkles, BookOpen, Calendar } from 'lucide-react';
 import UttLogo from './UttLogo';
 
 export default function Header({ 
@@ -8,21 +8,22 @@ export default function Header({
   onToggleSidebar, 
   searchQuery, 
   setSearchQuery,
-  onNavigate 
+  onNavigate,
+  currentView
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="bg-[#102a4d] text-white sticky top-0 z-40 shadow-md">
-      <div className="flex items-center justify-between px-4 py-2.5 h-16">
-        {/* Left: Hamburger & Logo */}
-        <div className="flex items-center gap-4">
+    <header className="bg-gradient-to-r from-[#0a1e3b] via-[#0d274d] to-[#0a1e3b] text-white sticky top-0 z-40 shadow-sm border-b border-blue-900/40 backdrop-blur-md">
+      <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 h-16">
+        {/* Left: Hamburger & New Modern Logo */}
+        <div className="flex items-center gap-3 sm:gap-4">
           <button
             onClick={onToggleSidebar}
-            className="p-1.5 rounded-lg hover:bg-white/10 text-white transition focus:outline-none"
+            className="p-2 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition focus:outline-none border border-white/5 active:scale-95"
             title="Đóng / mở menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
 
           <div 
@@ -33,77 +34,114 @@ export default function Header({
           </div>
         </div>
 
-        {/* Middle: Search Box */}
-        <div className="hidden md:flex items-center flex-1 max-w-xl mx-8">
+        {/* Center: Sleek Search Bar */}
+        <div className="hidden md:flex items-center flex-1 max-w-lg mx-6">
           <div className="relative w-full">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm kiếm thông tin..."
-              className="w-full bg-[#1b3d6c] hover:bg-[#20477e] focus:bg-[#20477e] text-sm text-white placeholder-slate-300 pl-4 pr-10 py-2 rounded-full border border-blue-400/20 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+              placeholder="Tìm kiếm thông báo, lịch thi, biểu mẫu..."
+              className="w-full bg-white/10 hover:bg-white/15 focus:bg-white/20 text-xs text-white placeholder-slate-300 pl-10 pr-16 py-2 rounded-xl border border-white/15 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all shadow-inner"
             />
-            <Search className="w-4 h-4 text-slate-300 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-slate-300 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[10px] font-mono bg-white/10 border border-white/20 rounded text-slate-300 pointer-events-none hidden sm:inline-block">
+              Ctrl K
+            </kbd>
           </div>
         </div>
 
-        {/* Right: Notifications & User Profile */}
-        <div className="flex items-center gap-3">
+        {/* Right: Quick action pills, Notification & User Profile */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Quick shortcuts on larger screens */}
+          <div className="hidden lg:flex items-center gap-1.5 mr-2">
+            <button
+              onClick={() => onNavigate('schedule')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition ${
+                currentView === 'schedule'
+                  ? 'bg-amber-500 text-white shadow-sm'
+                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <Calendar className="w-3.5 h-3.5 text-amber-400" />
+              <span>Thời khóa biểu</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate('registration')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition ${
+                currentView === 'registration'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+              <span>Đăng ký học</span>
+            </button>
+          </div>
+
+          {/* Notifications */}
           <button 
-            className="p-2 rounded-full hover:bg-white/10 text-slate-200 hover:text-white transition relative"
+            className="p-2 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition relative border border-white/5 active:scale-95"
             title="Thông báo mới"
+            onClick={() => alert("Bạn có 3 thông báo mới về học bổng và lịch học")}
           >
             <Bell className="w-5 h-5" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
           </button>
 
           {/* User Profile dropdown */}
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2.5 hover:bg-white/10 p-1.5 rounded-xl transition focus:outline-none"
+              className="flex items-center gap-2.5 hover:bg-white/10 p-1 rounded-xl transition focus:outline-none border border-transparent hover:border-white/10"
             >
-              <div className="w-9 h-9 rounded-full bg-slate-300 border-2 border-white/50 flex items-center justify-center overflow-hidden">
-                <User className="w-5 h-5 text-slate-700" />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-slate-900 font-bold flex items-center justify-center text-xs shadow-md">
+                {user?.name?.charAt(0) || "C"}
               </div>
-              <span className="hidden sm:inline text-sm font-medium text-slate-100 max-w-[160px] truncate">
-                {user?.name || "Nguyễn Bá Trung Cường"}
-              </span>
-              <ChevronDown className="w-4 h-4 text-slate-300" />
+              <div className="hidden sm:flex flex-col text-left leading-tight">
+                <span className="text-xs font-bold text-white max-w-[140px] truncate">
+                  {user?.name || "Nguyễn Bá Trung Cường"}
+                </span>
+                <span className="text-[10px] text-amber-300 font-mono">
+                  {user?.id || "74dcht21272"}
+                </span>
+              </div>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-300" />
             </button>
 
             {dropdownOpen && (
               <div 
-                className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl py-2 text-slate-700 text-xs border border-slate-100 z-50 animate-fadeIn"
+                className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl py-2 text-slate-700 text-xs border border-slate-100 z-50 animate-fadeIn"
                 onMouseLeave={() => setDropdownOpen(false)}
               >
-                <div className="px-4 py-2 border-b border-slate-100 mb-1">
+                <div className="px-4 py-2.5 border-b border-slate-100 mb-1 bg-slate-50/70">
                   <p className="font-bold text-slate-900 text-sm">{user?.name}</p>
-                  <p className="text-slate-500">MSSV: {user?.id}</p>
+                  <p className="text-slate-500 text-[11px]">Mã SV: {user?.id} • Lớp 74DCHT21</p>
                 </div>
 
                 <button
                   onClick={() => { onNavigate('profile'); setDropdownOpen(false); }}
-                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition"
+                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
                 >
                   <User className="w-4 h-4 text-blue-600" />
-                  <span>Hồ sơ cá nhân</span>
+                  <span>Hồ sơ cá nhân & Điểm số</span>
                 </button>
 
                 <button
                   onClick={() => { onNavigate('schedule'); setDropdownOpen(false); }}
-                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition"
+                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
                 >
-                  <Shield className="w-4 h-4 text-orange-500" />
-                  <span>Thời khóa biểu</span>
+                  <Calendar className="w-4 h-4 text-amber-500" />
+                  <span>Thời khóa biểu tuần</span>
                 </button>
 
                 <button
                   onClick={() => { onNavigate('tuition'); setDropdownOpen(false); }}
-                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition"
+                  className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-center gap-2.5 transition text-slate-700 font-medium"
                 >
                   <Key className="w-4 h-4 text-emerald-600" />
-                  <span>Tra cứu học phí</span>
+                  <span>Học phí & Công nợ</span>
                 </button>
 
                 <div className="border-t border-slate-100 mt-1 pt-1">
