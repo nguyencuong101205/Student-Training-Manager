@@ -8,18 +8,22 @@ import NewsSection from '../components/NewsSection';
 import TuitionView from '../components/TuitionView';
 import CourseRegistrationView from '../components/CourseRegistrationView';
 import ProfileView from '../components/ProfileView';
+import GradeLookupView from '../components/GradeLookupView';
+import AppealModal from '../components/AppealModal';
 import ArticleModal from '../components/ArticleModal';
 import PortalFooter from '../components/PortalFooter';
 
 export default function HomePage({ user, onLogout }) {
-  // Menu is closed by default. When opened, it blurs the whole screen and shows the rich icon menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'schedule' | 'tuition' | 'registration' | 'profile'
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'schedule' | 'tuition' | 'registration' | 'profile' | 'grades'
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isAppealOpen, setIsAppealOpen] = useState(false);
 
   const renderContent = () => {
     switch (currentView) {
+      case 'grades':
+        return <GradeLookupView />;
       case 'tuition':
         return <TuitionView />;
       case 'registration':
@@ -78,6 +82,7 @@ export default function HomePage({ user, onLogout }) {
               </button>
               <span>/</span>
               <span className="text-[#1b5fc1] font-extrabold capitalize text-xs">
+                {currentView === 'grades' && 'Góc học tập / Tra cứu điểm & Bảng điểm'}
                 {currentView === 'schedule' && 'Thời khóa biểu tuần'}
                 {currentView === 'tuition' && 'Tra cứu công nợ & học phí'}
                 {currentView === 'registration' && 'Đăng ký học phần'}
@@ -100,7 +105,7 @@ export default function HomePage({ user, onLogout }) {
       {/* Portal Footer */}
       <PortalFooter />
 
-      {/* Blurred Overlay Full-Page Menu Drawer */}
+      {/* Blurred Overlay Full-Page Menu Drawer with exact UTT Tree Nodes */}
       <Sidebar
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
@@ -110,12 +115,19 @@ export default function HomePage({ user, onLogout }) {
           setIsMenuOpen(false);
         }}
         onLogout={onLogout}
+        onOpenAppeal={() => setIsAppealOpen(true)}
       />
 
       {/* Article Detail Modal */}
       <ArticleModal 
         article={selectedArticle} 
         onClose={() => setSelectedArticle(null)} 
+      />
+
+      {/* Đăng ký xin phúc khảo Modal */}
+      <AppealModal 
+        isOpen={isAppealOpen} 
+        onClose={() => setIsAppealOpen(false)} 
       />
     </div>
   );

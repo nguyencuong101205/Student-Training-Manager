@@ -156,3 +156,16 @@ export const mockTuition = [
   { code: "HP-20252", title: "Học phí Học kỳ 2 Năm học 2025 - 2026", credits: 21, amount: 9200000, paid: 9200000, status: "Đã hoàn thành", date: "12/02/2026" },
   { code: "HP-20251", title: "Học phí Học kỳ 1 Năm học 2025 - 2026", credits: 18, amount: 7900000, paid: 7900000, status: "Đã hoàn thành", date: "10/09/2025" }
 ];
+
+export const mockGrades = [
+  { id: "INT201", name: "Cấu trúc dữ liệu & Giải thuật", credits: 3, attendance: 9.0, test: 8.5, exam: 8.5, total: 8.6, letter: "A", gpa4: 4.0 },
+  { id: "INT202", name: "Lập trình hướng đối tượng (OOP)", credits: 3, attendance: 10, test: 8.0, exam: 8.0, total: 8.2, letter: "B+", gpa4: 3.5 },
+  { id: "INT203", name: "Hệ điều hành", credits: 3, attendance: 9.5, test: 8.0, exam: 9.0, total: 8.8, letter: "A", gpa4: 4.0 },
+  { id: "INT204", name: "Mạng máy tính", credits: 3, attendance: 8.5, test: 7.5, exam: 8.0, total: 7.9, letter: "B", gpa4: 3.0 },
+  { id: "MAT102", name: "Xác suất thống kê", credits: 3, attendance: 9.0, test: 8.5, exam: 9.0, total: 8.8, letter: "A", gpa4: 4.0 },
+  { id: "ENG201", name: "Tiếng Anh chuyên ngành CNTT", credits: 2, attendance: 9.5, test: 9.0, exam: 9.0, total: 9.1, letter: "A+", gpa4: 4.0 }
+];
+
+export const mockAppeals = [
+  { id: "PCK-001", subject: "Mạng máy tính (INT204)", examDate: "15/06/2026", currentGrade: "7.9", reason: "Đề nghị chấm lại phần bài tập cấu hình định tuyến OSPF", status: "Đang xử lý", date: "20/06/2026" }
+];
